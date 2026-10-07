@@ -8,8 +8,8 @@ Format per day: Plan, Why, Done, Surprised me, Tomorrow starts with.
 
 **Why:** a stable, safe base before any feature work; secrets hygiene from the first commit.
 
-**Done:** (fill in tonight)
+**Done:** Created the public PayOps repository, added the MIT licence, repository configuration, architecture ADRs, devlog, sandbox documentation, safe environment setup, and successfully authenticated against PayPal Sandbox and called the Invoicing API.
 
-**Surprised me:** (fill in tonight)
+**Surprised me:** The PayPal Sandbox token included scope hints for invoicing, disputes, subscriptions, and reporting, while the Invoicing API currently returned zero invoices.
 
 **Tomorrow starts with:** Day 2, pnpm monorepo + API skeleton + CI + first deploy.
