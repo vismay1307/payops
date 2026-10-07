@@ -1,0 +1,24 @@
+# secrets (never commit)
+.env
+.env.*
+!.env.example
+
+# dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+.turbo/
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# local scratch
+tmp/
+.cache/
+*.local
