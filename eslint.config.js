@@ -4,8 +4,14 @@ import globals from 'globals';
 
 export default tseslint.config(
   {
-    ignores: ['node_modules/**', 'dist/**', 'coverage/**', '**/*.d.ts'],
-  },
+  ignores: [
+    "node_modules/**",
+    "dist/**",
+    "coverage/**",
+    "**/*.d.ts",
+    "scripts/**",
+  ],
+},
 
   eslint.configs.recommended,
 
