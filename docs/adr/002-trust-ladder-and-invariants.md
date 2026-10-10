@@ -18,18 +18,18 @@ Every case climbs five separate rungs. They are never blurred in code or UI:
 
 ## Hard invariants (cannot be disabled by configuration)
 
-| ID | Invariant |
-|----|-----------|
-| I-01 | Never automatically refund |
-| I-02 | Never automatically accept a dispute claim |
-| I-03 | Never automatically submit dispute evidence (human approval always) |
-| I-04 | Sandbox only: refuse any PayPal base URL that is not the sandbox host |
-| I-05 | Global cap on automatic money-related actions |
-| I-06 | Organisation kill switch |
+| ID   | Invariant                                                               |
+| ---- | ----------------------------------------------------------------------- |
+| I-01 | Never automatically refund                                              |
+| I-02 | Never automatically accept a dispute claim                              |
+| I-03 | Never automatically submit dispute evidence (human approval always)     |
+| I-04 | Sandbox only: refuse any PayPal base URL that is not the sandbox host   |
+| I-05 | Global cap on automatic money-related actions                           |
+| I-06 | Organisation kill switch                                                |
 | I-07 | Decisions must be made on fresh context (case version and context hash) |
-| I-08 | Action allowlist per case type |
-| I-09 | Low-confidence or invalid AI output escalates to a human |
-| I-10 | Attempt budget per case |
+| I-08 | Action allowlist per case type                                          |
+| I-09 | Low-confidence or invalid AI output escalates to a human                |
+| I-10 | Attempt budget per case                                                 |
 
 ## Consequences
 

@@ -4,11 +4,11 @@ Date: 2026-10-07
 
 > Never paste secrets, full tokens, or full client ids here.
 
-| Check | Result | Notes |
-|-------|--------|-------|
-| OAuth token (client credentials) | ✅ PASS | expires_in = 32400s |
-| Invoicing API reachable (`GET /v2/invoicing/invoices`) | ✅ PASS | total invoices = 0, debug id = f4472649bdf86 |
-| Scope hints in token response | ✅ PASS | invoicing / disputes / subscriptions / reporting |
+| Check                                                  | Result  | Notes                                            |
+| ------------------------------------------------------ | ------- | ------------------------------------------------ |
+| OAuth token (client credentials)                       | ✅ PASS | expires_in = 32400s                              |
+| Invoicing API reachable (`GET /v2/invoicing/invoices`) | ✅ PASS | total invoices = 0, debug id = f4472649bdf86     |
+| Scope hints in token response                          | ✅ PASS | invoicing / disputes / subscriptions / reporting |
 
 ## Notes
 

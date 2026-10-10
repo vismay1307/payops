@@ -8,19 +8,19 @@ PayOps is built by one developer with an AI coding assistant in 30 days. It must
 
 ## Decision
 
-| Area | Choice |
-|------|--------|
-| Repository | pnpm workspaces monorepo: `apps/api`, `apps/web`, `packages/shared` |
-| Runtime and language | Node 22 LTS, TypeScript (strict) |
-| API | Express 5 |
-| Database | PostgreSQL with Drizzle ORM and migrations |
-| Validation | Zod, shared between API, web and AI output schemas |
-| Background jobs | pg-boss (Postgres-based queue, no Redis) |
-| Web | React + Vite single-page app; AG Grid / AG Studio for the operations console |
-| AI | Provider-agnostic `LLMClient` interface, structured outputs, record/replay mode |
-| Hosting | Render (web service, static site, managed Postgres, cron) |
-| PayPal | Sandbox only: REST APIs and webhooks |
-| Licence | MIT |
+| Area                 | Choice                                                                          |
+| -------------------- | ------------------------------------------------------------------------------- |
+| Repository           | pnpm workspaces monorepo: `apps/api`, `apps/web`, `packages/shared`             |
+| Runtime and language | Node 22 LTS, TypeScript (strict)                                                |
+| API                  | Express 5                                                                       |
+| Database             | PostgreSQL with Drizzle ORM and migrations                                      |
+| Validation           | Zod, shared between API, web and AI output schemas                              |
+| Background jobs      | pg-boss (Postgres-based queue, no Redis)                                        |
+| Web                  | React + Vite single-page app; AG Grid / AG Studio for the operations console    |
+| AI                   | Provider-agnostic `LLMClient` interface, structured outputs, record/replay mode |
+| Hosting              | Render (web service, static site, managed Postgres, cron)                       |
+| PayPal               | Sandbox only: REST APIs and webhooks                                            |
+| Licence              | MIT                                                                             |
 
 ## Consequences
 
