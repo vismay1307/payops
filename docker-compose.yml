@@ -1,0 +1,16 @@
+﻿services:
+  postgres:
+    image: postgres:18
+    container_name: payops-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: payops
+      POSTGRES_USER: payops
+      POSTGRES_PASSWORD: ${PAYOPS_DB_PASSWORD:?Set PAYOPS_DB_PASSWORD in your environment}
+    ports:
+      - '127.0.0.1:5434:5432'
+    volumes:
+      - payops-postgres-data:/var/lib/postgresql
+
+volumes:
+  payops-postgres-data:

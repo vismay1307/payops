@@ -22,3 +22,6 @@ Thumbs.db
 tmp/
 .cache/
 *.local
+
+# TypeScript build metadata
+*.tsbuildinfo
