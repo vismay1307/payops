@@ -9,7 +9,7 @@
     "dev:web": "pnpm --filter @payops/web dev",
     "build": "pnpm -r build",
     "lint": "eslint .",
-    "typecheck": "pnpm -r typecheck",
+    "typecheck": "pnpm --filter @payops/shared build && pnpm -r typecheck",
     "test": "pnpm -r test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
