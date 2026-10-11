@@ -1,0 +1,34 @@
+# Render Blueprint for PayOps
+# Keep the API and PostgreSQL database in the same region.
+
+databases:
+  - name: payops-db
+    region: oregon
+    plan: basic-256mb
+    databaseName: payops
+    user: payops
+
+services:
+  - type: web
+    name: payops-api
+    runtime: node
+    region: oregon
+    plan: starter
+
+    buildCommand: corepack enable && pnpm install --frozen-lockfile --prod=false && pnpm --filter @payops/api build
+    startCommand: pnpm --filter @payops/api start
+    healthCheckPath: /healthz
+
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: info
+      - key: PAYPAL_ENV
+        value: sandbox
+      - key: DATABASE_URL
+        fromDatabase:
+          name: payops-db
+          property: connectionString
