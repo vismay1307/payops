@@ -77,8 +77,10 @@ async function normalizeError(response: Response): Promise<PayPalError> {
     retriable: response.status === 429 || RETRYABLE_5XX.has(response.status),
   });
 }
-
-export function createPayPalHttp(deps: HttpDependencies) {
+export interface PayPalHttp {
+  request(options: RequestOptions): Promise<PayPalResponse>;
+}
+export function createPayPalHttp(deps: HttpDependencies): PayPalHttp {
   assertSandbox(deps.baseUrl);
 
   const fetchFn = deps.fetchFn ?? fetch;
