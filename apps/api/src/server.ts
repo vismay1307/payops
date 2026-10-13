@@ -16,9 +16,11 @@ const server = app.listen(env.PORT, '0.0.0.0', () => {
   logger.info(
     {
       port: env.PORT,
-      environment: env.NODE_ENV,
+      nodeEnv: env.NODE_ENV,
+      paypalEnv: env.PAYPAL_ENV,
+      paypalConfigured: Boolean(env.PAYPAL_CLIENT_ID && env.PAYPAL_CLIENT_SECRET),
     },
-    'PayOps API server started',
+    'payops-api listening',
   );
 });
 

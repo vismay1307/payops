@@ -1,36 +1,42 @@
 import { z } from 'zod';
 
-const envSchema = z.object({
+const schema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
 
-  PORT: z.coerce.number().int().positive().default(3000),
+  PORT: z.coerce.number().int().min(1).max(65535).default(3000),
 
-  LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace']).default('info'),
+  LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']).default('info'),
+
+  // Invariant I-04: PayOps only ever talks to the PayPal sandbox.
+  PAYPAL_ENV: z.literal('sandbox').default('sandbox'),
+
+  PAYPAL_CLIENT_ID: z.string().min(1).optional(),
+  PAYPAL_CLIENT_SECRET: z.string().min(1).optional(),
 
   DATABASE_URL: z
     .string({
-      error: 'DATABASE_URL is required',
+      error: (issue) =>
+        issue.input === undefined ? 'DATABASE_URL is required' : 'DATABASE_URL must be a string',
     })
     .min(1, 'DATABASE_URL is required'),
 
-  PAYPAL_ENV: z.literal('sandbox'),
-
-  PAYPAL_CLIENT_ID: z.string().optional(),
-  PAYPAL_CLIENT_SECRET: z.string().optional(),
+  RENDER_GIT_COMMIT: z.string().optional(),
 });
 
-export type Env = z.infer<typeof envSchema>;
+export type Env = z.infer<typeof schema>;
 
 export function loadEnv(source: NodeJS.ProcessEnv = process.env): Env {
-  const result = envSchema.safeParse(source);
+  const parsed = schema.safeParse(source);
 
-  if (!result.success) {
-    const issues = result.error.issues
-      .map((issue) => `${issue.path.join('.')}: ${issue.message}`)
-      .join('; ');
+  if (!parsed.success) {
+    const lines = parsed.error.issues.map(
+      (issue) => `  - ${issue.path.join('.') || '(root)'}: ${issue.message}`,
+    );
 
-    throw new Error(`Invalid environment configuration: ${issues}`);
+    throw new Error(`Invalid environment configuration:\n${lines.join('\n')}`);
   }
 
-  return result.data;
+  return parsed.data;
 }
+
+/** Parsed once at startup. Only server.ts should import this. */
