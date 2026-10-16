@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "payops",
   "version": "1.0.0",
   "private": true,
@@ -9,13 +9,14 @@
     "dev:web": "pnpm --filter @payops/web dev",
     "build": "pnpm -r build",
     "lint": "eslint .",
-    "typecheck": "pnpm --filter @payops/shared build && pnpm -r typecheck",
+    "typecheck": "pnpm --filter @payops/shared build \u0026\u0026 pnpm -r typecheck",
     "test": "pnpm -r test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "verify": "pnpm format:check \u0026\u0026 pnpm lint \u0026\u0026 pnpm typecheck \u0026\u0026 pnpm test \u0026\u0026 pnpm build",
     "db:up": "docker compose up -d postgres",
-    "db:down": "docker compose down"
+    "db:down": "docker compose down",
+    "spike:invoice": "pnpm --filter @payops/api spike:invoice"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",

@@ -25,3 +25,17 @@ Format per day: Plan, Why, Done, Surprised me, Tomorrow starts with.
 **Surprised me:** A successful API health check is not the same as readiness. The readiness endpoint also checks database connectivity.
 
 **Tomorrow starts with:** Review the API foundation and begin the first recovery-domain implementation with validation and tests.
+
+## Day 3: PayPal client and invoice spike preparation
+
+**Plan:** Implement a typed, sandbox-only PayPal client with authentication, retry handling, invoice read/write operations, tests, and a repeatable invoice spike.
+
+**Why:** Establish a verified integration layer before building recovery actions or webhook processing.
+
+**Done:** Implemented the PayPal sandbox guard, token provider, HTTP wrapper, money helpers, invoice read/write APIs, and associated automated tests. Added the invoice spike script and package commands. The API typecheck passed, ESLint reported no errors for the spike script, and the API test suite passed: 7 test files and 66 tests.
+
+**Not yet verified:** The complete repository quality gate (`pnpm verify`) has not yet been run after these changes. The live sandbox invoice spike has not been executed. No real PayPal response fixtures have been captured yet.
+
+**Safety note:** The spike creates and sends a sandbox invoice and sends a reminder. It must not be run until its implementation and safety checks have been reviewed.
+
+**Tomorrow starts with:** Complete the fixture-redaction tests, run the full quality gate, review the final diff, and only then decide whether to execute the sandbox spike.

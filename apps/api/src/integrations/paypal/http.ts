@@ -40,7 +40,9 @@ function buildUrl(baseUrl: string, path: string, query?: RequestOptions['query']
   const url = new URL(path, baseUrl);
 
   for (const [key, value] of Object.entries(query ?? {})) {
-    if (value !== undefined) url.searchParams.set(key, String(value));
+    if (value !== undefined) {
+      url.searchParams.set(key, String(value));
+    }
   }
 
   return url.toString();
@@ -77,9 +79,11 @@ async function normalizeError(response: Response): Promise<PayPalError> {
     retriable: response.status === 429 || RETRYABLE_5XX.has(response.status),
   });
 }
+
 export interface PayPalHttp {
   request(options: RequestOptions): Promise<PayPalResponse>;
 }
+
 export function createPayPalHttp(deps: HttpDependencies): PayPalHttp {
   assertSandbox(deps.baseUrl);
 
@@ -158,7 +162,8 @@ export function createPayPalHttp(deps: HttpDependencies): PayPalHttp {
         continue;
       }
 
-      if (response.status === 429 && attempt < maxRetries) {
+      // Retry 429 only for idempotent requests to avoid repeating writes.
+      if (response.status === 429 && idempotent && attempt < maxRetries) {
         const delay =
           retryAfterMs(response) ?? Math.round(random() * Math.min(5000, 300 * 2 ** attempt));
 

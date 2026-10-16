@@ -134,16 +134,15 @@ describe('PayPal HTTP wrapper', () => {
     expect(calls).toHaveLength(2);
   });
 
-  it('retries a 429 and respects Retry-After', async () => {
+  it('retries a 429 and respects Retry-After for GET', async () => {
     const { http, calls, sleep } = setup([
       jsonResponse(429, {}, { 'retry-after': '2' }),
       jsonResponse(200, { ok: true }),
     ]);
 
     await http.request({
-      method: 'POST',
+      method: 'GET',
       path: '/v2/example',
-      body: {},
     });
 
     expect(calls).toHaveLength(2);

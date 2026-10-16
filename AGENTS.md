@@ -66,3 +66,17 @@ Routes → Controllers → Services → Repositories → Database
 - Prefer saved PayPal payload fixtures from `apps/api/tests/fixtures/paypal/`.
 - Run `pnpm verify` before every commit.
 - A change is complete only when the quality gate passes.
+
+## PayPal Integration Rules — Day 3
+
+- Invariant I-04 is mandatory: PayOps may communicate only with `https://api-m.sandbox.paypal.com`.
+- Never introduce a production PayPal base URL or a configurable production override.
+- Import the read-only PayPal facade from `integrations/paypal/read.ts` wherever reads are needed.
+- Keep write operations behind `integrations/paypal/write.ts`; follow the existing ESLint restriction and do not import the write facade into routes or controllers.
+- Spike scripts and tests may use the write facade explicitly.
+- Never log credentials, access tokens, authorization headers, complete raw PayPal responses, or recipient email addresses.
+- Redact sensitive fields and emails before saving API responses as fixtures.
+- Never blindly retry a non-idempotent invoice-creation request after an ambiguous network failure.
+- Keep invoice tests offline with mocked HTTP. Unit tests must not create, send, cancel, or remind real invoices.
+- The manual sandbox spike is an explicit side-effecting operation. Run it only after code verification and human confirmation.
+- Test authentication refresh, single-flight token requests, retry behavior, money parsing, and invoice create/send/read/remind behavior.
