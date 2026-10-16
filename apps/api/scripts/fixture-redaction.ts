@@ -1,5 +1,5 @@
 ﻿const SENSITIVE_KEY =
-  /authorization|access.?token|refresh.?token|client.?secret|client.?id|password|cookie|api.?key/i;
+  /authorization|access.?token|refresh.?token|client.?secret|client.?id|password|cookie|api.?key|recipient.?view.?url|invoice.?id|invoice.?number/i;
 
 const EMAIL_PATTERN = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g;
 const BEARER_PATTERN = /\bBearer\s+\S+/gi;

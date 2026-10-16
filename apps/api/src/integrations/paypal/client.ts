@@ -1,10 +1,11 @@
 import { createTokenProvider } from './auth.js';
 import { SANDBOX_BASE_URL } from './config.js';
 import { createPayPalHttp } from './http.js';
-
+import type { Logger } from 'pino';
 export interface PayPalClientConfig {
   clientId: string;
   clientSecret: string;
+  logger?: Logger;
 }
 
 export function createPayPalClient(config: PayPalClientConfig) {
@@ -16,5 +17,6 @@ export function createPayPalClient(config: PayPalClientConfig) {
   return createPayPalHttp({
     baseUrl: SANDBOX_BASE_URL,
     tokens,
+    ...(config.logger ? { logger: config.logger } : {}),
   });
 }

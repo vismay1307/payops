@@ -110,7 +110,7 @@ export function createPayPalHttp(deps: HttpDependencies): PayPalHttp {
           method: options.method,
           headers: {
             Authorization: `Bearer ${token}`,
-            Accept: 'application/json',
+            // Accept: 'application/json',
             ...(options.body !== undefined ? { 'Content-Type': 'application/json' } : {}),
             ...(options.requestId ? { 'PayPal-Request-Id': options.requestId } : {}),
           },
@@ -177,7 +177,21 @@ export function createPayPalHttp(deps: HttpDependencies): PayPalHttp {
         continue;
       }
 
-      throw await normalizeError(response);
+      const error = await normalizeError(response);
+
+      deps.logger?.error(
+        {
+          method: options.method,
+          path: options.path,
+          status: response.status,
+          debugId: error.debugId,
+          code: error.code,
+          details: error.details,
+        },
+        'paypal.response.error',
+      );
+
+      throw error;
     }
   }
 

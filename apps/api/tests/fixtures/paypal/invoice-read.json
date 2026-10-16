@@ -1,0 +1,128 @@
+{
+  "operation": "invoice-read",
+  "status": 200,
+  "body": {
+    "id": "INV2-R3N9-7J3F-AAH3-JLA7",
+    "status": "SENT",
+    "detail": {
+      "currency_code": "USD",
+      "note": "PayOps Day 3 sandbox verification invoice.",
+      "category_code": "SHIPPABLE",
+      "invoice_number": "PO1792148026424",
+      "invoice_date": "2026-10-16",
+      "payment_term": {
+        "term_type": "NET_10",
+        "due_date": "2026-10-26"
+      },
+      "viewed_by_recipient": false,
+      "group_draft": false,
+      "metadata": {
+        "create_time": "2026-10-16T10:53:47Z",
+        "last_update_time": "2026-10-16T10:53:47Z",
+        "first_sent_time": "2026-10-16T10:53:49Z",
+        "last_sent_time": "2026-10-16T10:53:49Z",
+        "created_by_flow": "REGULAR_SINGLE",
+        "recipient_view_url": "https://www.sandbox.paypal.com/invoice/p/#R3N97J3FAAH3JLA7",
+        "invoicer_view_url": "https://www.sandbox.paypal.com/invoice/details/INV2-R3N9-7J3F-AAH3-JLA7",
+        "caller_type": "API_V2_INVOICE",
+        "spam_info": {}
+      },
+      "archived": false
+    },
+    "invoicer": {
+      "email_address": "[REDACTED_EMAIL]"
+    },
+    "primary_recipients": [
+      {
+        "billing_info": {
+          "email_address": "[REDACTED_EMAIL]"
+        }
+      }
+    ],
+    "items": [
+      {
+        "id": "ITEM-0CU58127VF956170T",
+        "name": "Sandbox integration test",
+        "description": "Test invoice only; not a real-world sale.",
+        "quantity": "1",
+        "unit_amount": {
+          "currency_code": "USD",
+          "value": "1.00"
+        }
+      }
+    ],
+    "configuration": {
+      "tax_calculated_after_discount": false,
+      "tax_inclusive": false,
+      "allow_tip": false,
+      "allow_only_pay_by_bank": false,
+      "allow_vba_payments": false,
+      "save_item_for_future": true,
+      "template_id": "TEMP-7TC306572N539100D"
+    },
+    "amount": {
+      "breakdown": {
+        "item_total": {
+          "currency_code": "USD",
+          "value": "1.00"
+        },
+        "discount": {
+          "invoice_discount": {
+            "amount": {
+              "currency_code": "USD",
+              "value": "0.00"
+            }
+          },
+          "item_discount": {
+            "currency_code": "USD",
+            "value": "0.00"
+          }
+        },
+        "tax_total": {
+          "currency_code": "USD",
+          "value": "0.00"
+        }
+      },
+      "currency_code": "USD",
+      "value": "1.00"
+    },
+    "due_amount": {
+      "currency_code": "USD",
+      "value": "1.00"
+    },
+    "links": [
+      {
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7",
+        "rel": "self",
+        "method": "GET"
+      },
+      {
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7",
+        "rel": "replace",
+        "method": "PUT"
+      },
+      {
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7/cancel",
+        "rel": "cancel",
+        "method": "POST"
+      },
+      {
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7/remind",
+        "rel": "remind",
+        "method": "POST"
+      },
+      {
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7/payments",
+        "rel": "record-payment",
+        "method": "POST"
+      },
+      {
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7/generate-qr-code",
+        "rel": "qr-code",
+        "method": "GET"
+      }
+    ],
+    "unilateral": false,
+    "settings": {}
+  }
+}
