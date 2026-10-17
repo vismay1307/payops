@@ -2,28 +2,28 @@
   "operation": "invoice-read",
   "status": 200,
   "body": {
-    "id": "INV2-R3N9-7J3F-AAH3-JLA7",
+    "id": "INV2-6NFN-48GZ-ULPN-DHQU",
     "status": "SENT",
     "detail": {
       "currency_code": "USD",
       "note": "PayOps Day 3 sandbox verification invoice.",
       "category_code": "SHIPPABLE",
-      "invoice_number": "PO1792148026424",
-      "invoice_date": "2026-10-16",
+      "invoice_number": "[REDACTED]",
+      "invoice_date": "2026-10-17",
       "payment_term": {
         "term_type": "NET_10",
-        "due_date": "2026-10-26"
+        "due_date": "2026-10-27"
       },
       "viewed_by_recipient": false,
       "group_draft": false,
       "metadata": {
-        "create_time": "2026-10-16T10:53:47Z",
-        "last_update_time": "2026-10-16T10:53:47Z",
-        "first_sent_time": "2026-10-16T10:53:49Z",
-        "last_sent_time": "2026-10-16T10:53:49Z",
+        "create_time": "2026-10-17T17:09:24Z",
+        "last_update_time": "2026-10-17T17:09:24Z",
+        "first_sent_time": "2026-10-17T17:09:26Z",
+        "last_sent_time": "2026-10-17T17:09:26Z",
         "created_by_flow": "REGULAR_SINGLE",
-        "recipient_view_url": "https://www.sandbox.paypal.com/invoice/p/#R3N97J3FAAH3JLA7",
-        "invoicer_view_url": "https://www.sandbox.paypal.com/invoice/details/INV2-R3N9-7J3F-AAH3-JLA7",
+        "recipient_view_url": "[REDACTED]",
+        "invoicer_view_url": "https://www.sandbox.paypal.com/invoice/details/INV2-6NFN-48GZ-ULPN-DHQU",
         "caller_type": "API_V2_INVOICE",
         "spam_info": {}
       },
@@ -41,7 +41,7 @@
     ],
     "items": [
       {
-        "id": "ITEM-0CU58127VF956170T",
+        "id": "ITEM-8XD64732YJ546624P",
         "name": "Sandbox integration test",
         "description": "Test invoice only; not a real-world sale.",
         "quantity": "1",
@@ -92,32 +92,32 @@
     },
     "links": [
       {
-        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7",
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-6NFN-48GZ-ULPN-DHQU",
         "rel": "self",
         "method": "GET"
       },
       {
-        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7",
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-6NFN-48GZ-ULPN-DHQU",
         "rel": "replace",
         "method": "PUT"
       },
       {
-        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7/cancel",
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-6NFN-48GZ-ULPN-DHQU/cancel",
         "rel": "cancel",
         "method": "POST"
       },
       {
-        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7/remind",
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-6NFN-48GZ-ULPN-DHQU/remind",
         "rel": "remind",
         "method": "POST"
       },
       {
-        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7/payments",
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-6NFN-48GZ-ULPN-DHQU/payments",
         "rel": "record-payment",
         "method": "POST"
       },
       {
-        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7/generate-qr-code",
+        "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-6NFN-48GZ-ULPN-DHQU/generate-qr-code",
         "rel": "qr-code",
         "method": "GET"
       }

@@ -3,7 +3,7 @@
   "status": 201,
   "body": {
     "rel": "self",
-    "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-R3N9-7J3F-AAH3-JLA7",
+    "href": "https://api.sandbox.paypal.com/v2/invoicing/invoices/INV2-6NFN-48GZ-ULPN-DHQU",
     "method": "GET"
   }
 }

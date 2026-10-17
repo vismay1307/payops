@@ -138,6 +138,13 @@ async function main(): Promise<void> {
   logger.info(`Invoice send result: HTTP ${sent.status}`);
 
   const invoice = await read.invoices.get(created.id);
+  const buyerUrl = invoice.detail?.metadata?.recipient_view_url;
+
+  if (buyerUrl) {
+    logger.info(`Open as the buyer: ${buyerUrl}`);
+  } else {
+    logger.warn('Recipient view URL not present in invoice metadata.');
+  }
 
   if (invoice.id !== created.id) {
     throw new Error('Invoice verification failed: returned ID did not match.');
