@@ -51,8 +51,8 @@ function getMigrationConfig(): {
     throw new Error('Production database URL must use PostgreSQL');
   }
 
-  if (url.pathname !== '/payops') {
-    throw new Error('Production migrations only permit the payops database');
+  if (url.pathname !== '/payops_r17o') {
+    throw new Error('Production migrations only permit the payops_r17o database');
   }
 
   if (['localhost', '127.0.0.1', '::1'].includes(url.hostname)) {
