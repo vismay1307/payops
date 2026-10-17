@@ -86,7 +86,12 @@ async function main(): Promise<void> {
 
 main().catch((error: unknown) => {
   logger.error(
-    { errorType: error instanceof Error ? error.name : 'UnknownError' },
+    {
+      errorType: error instanceof Error ? error.name : 'UnknownError',
+      errorMessage: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      cause: error instanceof Error ? error.cause : undefined,
+    },
     'Database migration failed',
   );
 
