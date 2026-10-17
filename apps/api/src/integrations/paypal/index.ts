@@ -14,3 +14,4 @@ export { PayPalError } from './errors.js';
 export { createPayPalReadApi } from './read.js';
 
 export type { Invoice, InvoiceList } from './types.js';
+export { createWebhooksApi, type WebhookSignatureInput } from './webhooks.js';

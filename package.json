@@ -16,7 +16,8 @@
     "verify": "pnpm format:check \u0026\u0026 pnpm lint \u0026\u0026 pnpm typecheck \u0026\u0026 pnpm test \u0026\u0026 pnpm build",
     "db:up": "docker compose up -d postgres",
     "db:down": "docker compose down",
-    "spike:invoice": "pnpm --filter @payops/api spike:invoice"
+    "spike:invoice": "pnpm --filter @payops/api spike:invoice",
+    "db:test:create": "docker compose exec -T postgres psql -U payops -d postgres -c \"CREATE DATABASE payops_test\""
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",

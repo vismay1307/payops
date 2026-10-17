@@ -1,5 +1,10 @@
 import { z } from 'zod';
 
+const optionalString = () =>
+  z
+    .string()
+    .optional()
+    .transform((value) => (value ? value : undefined));
 const schema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
 
@@ -21,6 +26,7 @@ const schema = z.object({
     .min(1, 'DATABASE_URL is required'),
 
   RENDER_GIT_COMMIT: z.string().optional(),
+  PAYPAL_WEBHOOK_ID: optionalString(),
 });
 
 export type Env = z.infer<typeof schema>;

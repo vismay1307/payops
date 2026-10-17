@@ -9,6 +9,7 @@ export interface RequestOptions {
   path: string;
   query?: Record<string, string | number | boolean | undefined>;
   body?: unknown;
+  rawBody?: string;
   idempotent?: boolean;
   requestId?: string;
 }
@@ -110,11 +111,16 @@ export function createPayPalHttp(deps: HttpDependencies): PayPalHttp {
           method: options.method,
           headers: {
             Authorization: `Bearer ${token}`,
-            // Accept: 'application/json',
-            ...(options.body !== undefined ? { 'Content-Type': 'application/json' } : {}),
+            ...(options.body !== undefined || options.rawBody !== undefined
+              ? { 'Content-Type': 'application/json' }
+              : {}),
             ...(options.requestId ? { 'PayPal-Request-Id': options.requestId } : {}),
           },
-          ...(options.body !== undefined ? { body: JSON.stringify(options.body) } : {}),
+          ...(options.rawBody !== undefined
+            ? { body: options.rawBody }
+            : options.body !== undefined
+              ? { body: JSON.stringify(options.body) }
+              : {}),
           signal: AbortSignal.timeout(timeoutMs),
         });
       } catch {

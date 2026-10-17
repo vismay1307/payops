@@ -17,6 +17,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: payops
+          POSTGRES_PASSWORD: payops
+          POSTGRES_DB: payops_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U payops -d payops_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      TEST_DATABASE_URL: postgres://payops:payops@localhost:5432/payops_test
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,6 +61,11 @@ jobs:
 
       - name: Typecheck
         run: pnpm typecheck
+
+      - name: Run test database migrations
+        run: pnpm --filter @payops/api db:migrate:test
+        env:
+          MIGRATION_TARGET: test
 
       - name: Run tests
         run: pnpm test

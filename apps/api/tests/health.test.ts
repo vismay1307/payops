@@ -11,6 +11,7 @@ const testEnv: Env = {
   LOG_LEVEL: 'error',
   DATABASE_URL: 'postgres://postgres:postgres@localhost:5432/payops',
   PAYPAL_ENV: 'sandbox',
+  PAYPAL_WEBHOOK_ID: undefined,
 };
 
 function makeDb(query: ReturnType<typeof vi.fn>): DbPool {
